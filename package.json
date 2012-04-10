@@ -1,0 +1,30 @@
+{
+    "name": "funkit",
+    "description": "Various utilities",
+    "author": "Juho Vepsalainen <bebraw@gmail.com>",
+    "version": "0.0.1",
+
+    "dependencies": {
+        "suite.js": ">= 0.1.1"
+    },
+
+    "main": "./lib/funkit.js",
+
+    "repository": {
+        "type": "git",
+        "url": "https://bebraw@github.com/bebraw/funkit"
+    },
+
+    "homepage": "https://github.com/bebraw/funkit",
+
+    "bugs": {
+        "url": "https://github.com/bebraw/funkit/issues"
+    },
+
+    "keywords": ["functional", "utilities"],
+
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/bebraw/funkit/blob/master/LICENSE"
+    }]
+}
