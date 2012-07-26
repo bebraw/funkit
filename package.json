@@ -5,7 +5,7 @@
     "version": "0.3.3",
 
     "dependencies": {
-        "suite.js": ">= 0.1.1",
+        "suite.js": "== 0.3.1",
         "generators.js": ">= 0.1.9"
     },
 
