@@ -2,7 +2,7 @@
     "name": "funkit",
     "description": "Various utilities",
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
-    "version": "0.4.2",
+    "version": "0.4.3",
 
     "dependencies": {
         "suite.js": "== 0.3.1",
