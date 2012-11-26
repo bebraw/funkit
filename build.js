@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var Handlebars = require('handlebars');
 
 main(process.argv);
 
@@ -34,8 +35,42 @@ function generateAMD() {
 
             if(ext == '.js') return file;
         }, function(err, files) {
-            // TODO: output the filenames using a template substitution
+            var data = packageData(files);
+            var tplPath = path.join(__dirname, '_templates', 'package.hbs');
+
+            compile(tplPath, function(err, tpl) {
+                var output = tpl(data);
+                // TODO: write to file
+            });
         });
+    });
+}
+
+Handlebars.registerHelper('list', function(items, options) {
+    return items.map(function(val) {
+        return options.fn(val);
+    }).join(',\n        ');
+});
+
+function packageData(files) {
+    var modules = files.map(function(file) {
+        var parts = file.split(path.sep);
+        var len = parts.length;
+
+        return {
+            'package': parts[len - 2],
+            name: parts[len -  1]
+        };
+    });
+
+    return {
+        modules: modules
+    };
+}
+
+function compile(path, cb) {
+    fs.readFile(path, function(err, f) {
+        cb(err, Handlebars.compile(f.toString()));
     });
 }
 
