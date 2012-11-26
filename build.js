@@ -29,22 +29,35 @@ function generateAMD() {
    var libPath = path.join(__dirname, 'lib');
 
     dirs(libPath, function(err, dir) {
-        console.log(dir);
-        // TODO: get js file names within dirs now
-        // TODO: output to lib/ using a template substitution
+        files(dir, function(err, file) {
+            var ext = path.extname(file);
+            // TODO: convert this into a parallel exec using funkit
+            // and output the filesnames using a template substitution
+            if(ext == '.js') console.log(file);
+        });
     });
 }
 
 function dirs(p, cb) {
+    readdir(p, function(err, fp) {
+        fs.stat(fp, function(err, f) {
+            if(f.isDirectory()) cb(err, fp, f);
+        });
+    });
+}
+
+function files(p, cb) {
+    readdir(p, function(err, fp) {
+        fs.stat(fp, function(err, f) {
+            if(f.isFile()) cb(err, fp, f);
+        });
+    });
+}
+
+function readdir(p, cb) {
     fs.readdir(p, function(err, files) {
-        if(err) throw err;
-
         files.forEach(function(file) {
-            var fp = path.join(p, file);
-
-            fs.stat(fp, function(err, f) {
-                if(f.isDirectory()) cb(err, fp);
-            });
+            cb(err, path.join(p, file));
         });
     });
 }
