@@ -31,36 +31,46 @@ function generateAMD() {
     dirs(libPath, function(err, dir) {
         files(dir, function(err, file) {
             var ext = path.extname(file);
-            // TODO: convert this into a parallel exec using funkit
-            // and output the filesnames using a template substitution
-            if(ext == '.js') console.log(file);
+
+            if(ext == '.js') return file;
+        }, function(err, files) {
+            // TODO: output the filenames using a template substitution
         });
     });
 }
 
-function dirs(p, cb) {
-    readdir(p, function(err, fp) {
+function dirs(p, cb, done) {
+    readdir(p, function(err, fp, done) {
         fs.stat(fp, function(err, f) {
-            if(f.isDirectory()) cb(err, fp, f);
+            if(f.isDirectory()) done(err, cb(err, fp, f));
         });
-    });
+    }, done);
 }
 
-function files(p, cb) {
-    readdir(p, function(err, fp) {
+function files(p, cb, done) {
+    readdir(p, function(err, fp, done) {
         fs.stat(fp, function(err, f) {
-            if(f.isFile()) cb(err, fp, f);
+            if(f.isFile()) done(err, cb(err, fp, f));
         });
-    });
+    }, done);
 }
 
-function readdir(p, cb) {
+function readdir(p, cb, done) {
+    done = done || function() {};
+    var items = [];
+
     fs.readdir(p, function(err, files) {
         files.forEach(function(file) {
-            cb(err, path.join(p, file));
+            cb(err, path.join(p, file), function(err, f) {
+                items.push(f);
+
+                if(files.length == items.length) done(err, items.filter(id));
+            });
         });
     });
 }
+
+function id(a) {return a;}
 
 function generateCJS() {
     console.log('cjs'); // TODO
