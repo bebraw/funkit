@@ -11,8 +11,8 @@ function main(argv) {
 
     program.option('-s --silent', 'suppress log messages');
 
-    cmd(program, 'amd', 'generate amd modules', generateAMD);
-    cmd(program, 'cjs', 'generate cjs modules', generateCJS);
+    cmd(program, 'amd', 'generate amd modules', partial(generateAMD, out));
+    cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out));
 
     program.parse(argv);
 
@@ -20,13 +20,27 @@ function main(argv) {
         program.outputHelp();
         process.exit(0);
     }
+
+    function out(t) {
+        if(!program.silent) console.log(t);
+    }
+}
+
+// http://stackoverflow.com/questions/4394747/javascript-curry-function
+function partial(fn) {
+    var slice = Array.prototype.slice;
+    var args = slice.apply(arguments, [1]);
+
+    return function() {
+        return fn.apply(null, args.concat(slice.apply(arguments)));
+    };
 }
 
 function cmd(program, command, desc, action) {
     program.command(command).description(desc).action(action);
 }
 
-function generateAMD() {
+function generateAMD(out) {
    var libPath = path.join(__dirname, 'lib');
 
     dirs(libPath, function(err, dir) {
@@ -41,9 +55,7 @@ function generateAMD() {
             compile(tplPath, function(err, tpl) {
                 var p = path.join(__dirname, 'lib', path.basename(dir) + '.js');
 
-                fs.writeFile(p, tpl(data), function(err) {
-                    console.log('Wrote', p);
-                });
+                fs.writeFile(p, tpl(data), out(p));
             });
         });
     });
@@ -110,6 +122,6 @@ function readdir(p, cb, done) {
 
 function id(a) {return a;}
 
-function generateCJS() {
+function generateCJS(out) {
     console.log('cjs'); // TODO
 }
