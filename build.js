@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
+var path = require('path');
+
 main(process.argv);
 
 function main(argv) {
@@ -23,7 +26,27 @@ function cmd(program, command, desc, action) {
 }
 
 function generateAMD() {
-    console.log('amd'); // TODO
+   var libPath = path.join(__dirname, 'lib');
+
+    dirs(libPath, function(err, dir) {
+        console.log(dir);
+        // TODO: get js file names within dirs now
+        // TODO: output to lib/ using a template substitution
+    });
+}
+
+function dirs(p, cb) {
+    fs.readdir(p, function(err, files) {
+        if(err) throw err;
+
+        files.forEach(function(file) {
+            var fp = path.join(p, file);
+
+            fs.stat(fp, function(err, f) {
+                if(f.isDirectory()) cb(err, fp);
+            });
+        });
+    });
 }
 
 function generateCJS() {
