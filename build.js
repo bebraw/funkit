@@ -49,20 +49,25 @@ function generateAMD(out) {
 
             if(ext == '.js') return file;
         }, function(err, files) {
-            var data = packageData(files);
-            var tplPath = path.join(__dirname, '_templates', 'package.hbs');
-
-            compile(tplPath, function(err, tpl) {
-                var p = path.join(__dirname, 'lib', path.basename(dir) + '.js');
-
-                //fs.writeFile(p, tpl(data), out(p));
-            });
+            writeTemplate(files, path.basename(dir), 'package', out);
         });
 
         return dir;
     }, function(err, dirs) {
-        // TODO: output index.js containing package requires
+        writeTemplate(dirs, 'index', 'index', out);
     });
+}
+
+function writeTemplate(data, filename, template, out) {
+    compile(templatePath(template + '.hbs'), function(err, tpl) {
+        var p = path.join(__dirname, 'lib', filename + '.js');
+
+        fs.writeFile(p, tpl(packageData(data)), out(p));
+    });
+}
+
+function templatePath(name) {
+    return path.join(__dirname, '_templates', name);
 }
 
 Handlebars.registerHelper('list', function(items, options) {
