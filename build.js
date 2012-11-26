@@ -134,7 +134,7 @@ function id(a) {return a;}
 
 function generateCJS(out) {
     generateAMD(out);
-    nodefy.batchConvert('lib/**/**.js', 'cjs', function(err, results) {
+    nodefy.batchConvert('lib/**/**.js', 'node_modules/funkit', function(err, results) {
         results.forEach(function(v) {
             out(path.join(__dirname, v.outputPath));
         });
