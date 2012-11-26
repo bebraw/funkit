@@ -15,8 +15,8 @@ function main(argv) {
 
     program.option('-s --silent', 'suppress log messages');
 
-    cmd(program, 'amd', 'generate amd modules', partial(generateAMD, out));
-    cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out));
+    cmd(program, 'amd', 'generate amd modules', partial(generateAMD, out, noop));
+    cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out, noop));
 
     program.parse(argv);
 
@@ -123,7 +123,7 @@ function files(p, cb, done) {
 }
 
 function readdir(p, cb, done) {
-    done = done || function() {};
+    done = done || noop;
     var items = [];
 
     fs.readdir(p, function(err, files) {
@@ -137,10 +137,8 @@ function readdir(p, cb, done) {
     });
 }
 
-function id(a) {return a;}
-
 function generateCJS(out, done) {
-    out = out || function() {};
+    out = out || noop;
 
     generateAMD(out, function() {
         nodefy.batchConvert('lib/**/**.js', 'node_modules/funkit', function(err, results) {
@@ -151,3 +149,6 @@ function generateCJS(out, done) {
         });
     });
 }
+
+function noop() {}
+function id(a) {return a;}
