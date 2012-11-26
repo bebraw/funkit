@@ -55,9 +55,13 @@ function generateAMD(out) {
             compile(tplPath, function(err, tpl) {
                 var p = path.join(__dirname, 'lib', path.basename(dir) + '.js');
 
-                fs.writeFile(p, tpl(data), out(p));
+                //fs.writeFile(p, tpl(data), out(p));
             });
         });
+
+        return dir;
+    }, function(err, dirs) {
+        // TODO: output index.js containing package requires
     });
 }
 
@@ -92,7 +96,7 @@ function compile(path, cb) {
 function dirs(p, cb, done) {
     readdir(p, function(err, fp, done) {
         fs.stat(fp, function(err, f) {
-            if(f.isDirectory()) done(err, cb(err, fp, f));
+            done(err, f.isDirectory() && cb(err, fp, f));
         });
     }, done);
 }
@@ -100,7 +104,7 @@ function dirs(p, cb, done) {
 function files(p, cb, done) {
     readdir(p, function(err, fp, done) {
         fs.stat(fp, function(err, f) {
-            if(f.isFile()) done(err, cb(err, fp, f));
+            done(err, f.isFile() && cb(err, fp, f));
         });
     }, done);
 }
