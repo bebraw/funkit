@@ -6,6 +6,7 @@
 
     "devDependencies": {
         "commander": "== 1.1.1",
+        "glob": "== 3.1.14",
         "handlebars": "== 1.0.7",
         "nodefy": "== 0.2.1",
         "suite.js": "== 0.4.0",
@@ -13,10 +14,10 @@
     },
 
     "scripts": {
-        "test": "node ./lib/tests"
+        "test": "node ./test.js"
     },
 
-    "main": "./lib/funkit.js",
+    "main": "./cjs/index.js",
 
     "repository": {
         "type": "git",

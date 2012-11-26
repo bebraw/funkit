@@ -5,7 +5,10 @@ var path = require('path');
 var Handlebars = require('handlebars');
 var nodefy = require('nodefy');
 
-main(process.argv);
+exports.generateAMD = generateAMD;
+exports.generateCJS = generateCJS;
+
+if(require.main == module) main(process.argv);
 
 function main(argv) {
     var program = require('commander');
@@ -41,7 +44,7 @@ function cmd(program, command, desc, action) {
     program.command(command).description(desc).action(action);
 }
 
-function generateAMD(out) {
+function generateAMD(out, done) {
    var libPath = path.join(__dirname, 'lib');
 
     dirs(libPath, function(err, dir) {
@@ -56,10 +59,14 @@ function generateAMD(out) {
         return dir;
     }, function(err, dirs) {
         writeTemplate(dirs, 'index', 'index', out);
+
+        done();
     });
 }
 
 function writeTemplate(data, filename, template, out) {
+    out = out || function() {};
+
     compile(templatePath(template + '.hbs'), function(err, tpl) {
         var p = path.join(__dirname, 'lib', filename + '.js');
 
@@ -132,11 +139,15 @@ function readdir(p, cb, done) {
 
 function id(a) {return a;}
 
-function generateCJS(out) {
-    generateAMD(out);
-    nodefy.batchConvert('lib/**/**.js', 'node_modules/funkit', function(err, results) {
-        results.forEach(function(v) {
-            out(path.join(__dirname, v.outputPath));
+function generateCJS(out, done) {
+    out = out || function() {};
+
+    generateAMD(out, function() {
+        nodefy.batchConvert('lib/**/**.js', 'node_modules/funkit', function(err, results) {
+            results.forEach(function(v) {
+                out(path.join(__dirname, v.outputPath));
+            });
+            done();
         });
     });
 }
