@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var Handlebars = require('handlebars');
+var nodefy = require('nodefy');
 
 main(process.argv);
 
@@ -22,7 +23,7 @@ function main(argv) {
     }
 
     function out(t) {
-        if(!program.silent) console.log(t);
+        if(!program.silent) console.log('Wrote', t);
     }
 }
 
@@ -132,5 +133,10 @@ function readdir(p, cb, done) {
 function id(a) {return a;}
 
 function generateCJS(out) {
-    console.log('cjs'); // TODO
+    generateAMD(out);
+    nodefy.batchConvert('lib/**/**.js', 'cjs', function(err, results) {
+        results.forEach(function(v) {
+            out(path.join(__dirname, v.outputPath));
+        });
+    });
 }
