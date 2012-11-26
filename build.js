@@ -39,8 +39,11 @@ function generateAMD() {
             var tplPath = path.join(__dirname, '_templates', 'package.hbs');
 
             compile(tplPath, function(err, tpl) {
-                var output = tpl(data);
-                // TODO: write to file
+                var p = path.join(__dirname, 'lib', path.basename(dir) + '.js');
+
+                fs.writeFile(p, tpl(data), function(err) {
+                    console.log('Wrote', p);
+                });
             });
         });
     });
@@ -59,7 +62,7 @@ function packageData(files) {
 
         return {
             'package': parts[len - 2],
-            name: parts[len -  1]
+            name: parts[len -  1].split('.')[0]
         };
     });
 
