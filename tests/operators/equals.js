@@ -10,6 +10,11 @@ suite(f.equals, suite.generate(1000,
     }
 ));
 
+suite(partial(f.equals, []), [
+    [[]], true,
+    [[3]], false
+]);
+
 suite(partial(f.equals, [1, 2, 3]), [
     [[1, 2, 3]], true,
     [[1, 2, 3, 5]], false
