@@ -24,6 +24,10 @@
         "url": "git@github.com:bebraw/funkit.git"
     },
 
+    "directories": {
+        "lib": "./node_modules/funkit"
+    },
+
     "homepage": "https://github.com/bebraw/funkit",
 
     "bugs": {
