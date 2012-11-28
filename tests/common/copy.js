@@ -4,7 +4,7 @@ var f = require('funkit/common');
 var equals = require('funkit/operators/equals');
 
 suite(f.copy, suite.generate(1000,
-    [g.list(100, g.number(1000))],
+    [g.array(100, g.number(1000))],
     function(op, a) {
         return op(a) != a && equals(op(a), a);
     })
