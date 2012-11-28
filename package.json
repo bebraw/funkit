@@ -21,7 +21,7 @@
 
     "repository": {
         "type": "git",
-        "url": "https://bebraw@github.com/bebraw/funkit"
+        "url": "git@github.com:bebraw/funkit.git"
     },
 
     "homepage": "https://github.com/bebraw/funkit",
