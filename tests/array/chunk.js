@@ -11,8 +11,9 @@ suite(partial(f.chunk, 2), [
     [['a', 2, 'c']], [['a', 2], ['c']]
 ]);
 
+// TODO: simplify using annotated data!
 suite(f.chunk, suite.generate(1000,
-    [g.number(1000), g.array(10, g.character)],
+    [g.number(1, 1000), g.array(10, g.character)],
     function(op, len, arr) {
         return equals(f.concat(op(len, arr)), arr);
     })
