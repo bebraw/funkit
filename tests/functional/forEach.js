@@ -1,5 +1,5 @@
 var suite = require('suite.js');
-var types = require('funkit/types');
+var is = require('funkit/is');
 var ops = require('funkit/ops');
 var f = require('funkit/functional');
 
@@ -11,14 +11,14 @@ suite(checkForEach, [
 function checkForEach(o) {
     var found;
 
-    if(types.isArray(o)) {
+    if(is.array(o)) {
         found = [];
 
         f.forEach(o, function(v) {
             found.push(v);
         });
     }
-    if(types.isObject(o)) {
+    if(is.object(o)) {
         found = {};
 
         f.forEach(o, function(k, v) {
