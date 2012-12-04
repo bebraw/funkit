@@ -2,7 +2,7 @@ var suite = require('suite.js');
 var partial = require('funkit/functional/partial');
 var g = require('generators.js');
 var f = require('funkit/array');
-var equals = require('funkit/operators/equals');
+var equals = require('funkit/ops/equals');
 
 suite(partial(f.chunk, 2), [
     [[]], [],

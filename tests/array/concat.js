@@ -1,7 +1,7 @@
 var suite = require('suite.js');
 var g = require('generators.js');
 var f = require('funkit/array');
-var equals = require('funkit/operators/equals');
+var equals = require('funkit/ops/equals');
 
 suite(f.concat, [
     [[1]], [1],

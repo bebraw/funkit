@@ -1,5 +1,5 @@
 var suite = require('suite.js');
-var ops = require('funkit/operators');
+var ops = require('funkit/ops');
 var f = require('funkit/functional');
 
 suite(checkChain, [

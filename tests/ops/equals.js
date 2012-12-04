@@ -1,7 +1,7 @@
 var suite = require('suite.js');
 var partial = require('funkit/functional/partial');
 var g = require('generators.js');
-var f = require('funkit/operators');
+var f = require('funkit/ops');
 
 suite(f.equals, suite.generate(1000,
     [g.structure],
