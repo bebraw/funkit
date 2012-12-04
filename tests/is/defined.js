@@ -1,7 +1,7 @@
 var suite = require('suite.js');
-var f = require('funkit/types');
+var is = require('funkit/is');
 
-suite(f.isDefined, [
+suite(is.defined, [
     'foo', true,
     undefined, false,
     false, true,
