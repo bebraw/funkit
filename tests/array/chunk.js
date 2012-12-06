@@ -1,7 +1,12 @@
 var suite = require('suite.js');
+var g = require('generators.js');
 var partial = require('funkit/functional/partial');
 var f = require('funkit/array');
 var equals = require('funkit/ops/equals');
+var chunk = require('funkit/array/chunk');
+
+suite._amount = 1000;
+suite._generator = g.any;
 
 suite(partial(f.chunk, 2), [
     [[]], [],
