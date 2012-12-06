@@ -9,7 +9,7 @@
         "glob": "== 3.1.14",
         "handlebars": "== 1.0.7",
         "nodefy": "== 0.2.1",
-        "suite.js": "== 0.4.0",
+        "suite.js": "== 0.5.0",
         "generators.js": "== 0.2.6"
     },
 
