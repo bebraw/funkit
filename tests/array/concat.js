@@ -9,12 +9,6 @@ suite(f.concat, [
     [[['a', 'b', 'c'], [1, 2, 3]]], ['a', 'b', 'c', 1, 2, 3]
 ]);
 
-// TODO
-/*
-suite(f.concat, suite.generate(10,
-    [g.number(1000), g.array(10, g.character)],
-    function(op, len, arr) {
-        return equals(f.concat(f.chunk(len, arr)), arr);
-    }
-));
-*/
+suite(f.concat, function(op, arr) {
+    return equals(f.concat(f.chunk(3, arr)), arr);
+});
