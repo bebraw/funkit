@@ -2,8 +2,6 @@ var suite = require('suite.js');
 var partial = require('funkit/functional/partial');
 var f = require('funkit/common');
 
-// TODO: make sure param checkers can be only functions
-
 function add(a, b) {
     return a + b;
 }
@@ -12,14 +10,14 @@ f.annotate(add, Number, Number);
 
 suite(partial(getMeta, add), [
     '_doc', undefined,
-    '_types', [Number, Number]
+    '_invariants', [Number, Number]
 ]);
 
 f.annotate(add, String, String, 'Appends two strings');
 
 suite(partial(getMeta, add), [
     '_doc', 'Appends two strings',
-    '_types', [String, String]
+    '_invariants', [String, String]
 ]);
 
 function getMeta(fn, name) {

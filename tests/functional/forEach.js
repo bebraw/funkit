@@ -14,16 +14,16 @@ function checkForEach(o) {
     if(is.array(o)) {
         found = [];
 
-        f.forEach(o, function(v) {
+        f.forEach(function(v) {
             found.push(v);
-        });
+        }, o);
     }
     if(is.object(o)) {
         found = {};
 
-        f.forEach(o, function(k, v) {
+        f.forEach(function(k, v) {
             found[k] = v;
-        });
+        }, o);
     }
 
     return ops.equals(o, found);
