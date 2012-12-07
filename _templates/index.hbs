@@ -1,6 +1,10 @@
 // GENERATED! DO NOT MODIFY!
-define(function(require) {
-    return {
+define(['funkit/functional/partial'], function(partial, require) {
+    var ret = {
         {{#list modules}}'{{name}}': require('./{{name}}'){{/list}}
     };
+
+    ret.partial = partial;
+
+    return ret;
 });
