@@ -6,6 +6,6 @@ var equals = require('funkit/ops/equals');
 suite._amount = 1000;
 suite._generator = g.any;
 
-suite(f.concat, function(op, arr) {
-    return equals(f.concat(f.chunk(3, arr)), arr);
+suite(f.flatten, function(op, arr) {
+    return equals(f.flatten(f.chunk(3, arr)), arr);
 });

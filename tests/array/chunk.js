@@ -7,5 +7,5 @@ suite._amount = 1000;
 suite._generator = g.any;
 
 suite(f.chunk, function(op, len, arr) {
-    return equals(f.concat(op(len, arr)), arr);
+    return equals(f.flatten(op(len, arr)), arr);
 });
