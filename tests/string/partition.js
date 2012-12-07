@@ -1,8 +1,7 @@
 var suite = require('suite.js');
-var partial = require('funkit/functional/partial');
-var f = require('funkit/string');
+var f = require('funkit');
 
-suite(partial(f.partition, ' '), [
+suite(f.partial(f.string.partition, ' '), [
     'foo bar baz', ['foo', 'bar baz'],
     'zoo', ['zoo']
 ]);

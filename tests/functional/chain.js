@@ -1,14 +1,16 @@
 var suite = require('suite.js');
-var ops = require('funkit/ops');
-var f = require('funkit/functional');
-var capitalize = require('funkit/string/capitalize');
+var f = require('funkit');
+var fun = f.functional;
+var ops = f.ops;
+var chain = f.functional.chain;
+var capitalize = f.string.capitalize;
 
 suite(checkChain, [
     [[1, 5, 1]], 10
 ]);
 
 function checkChain(a) {
-    var _ = f.chain(f.map, f.filter, f.reduce);
+    var _ = chain(fun.map, fun.filter, fun.reduce);
 
     return op(a, _);
 }
@@ -18,7 +20,7 @@ suite(checkArrayChain, [
 ]);
 
 function checkArrayChain(a) {
-    var _ = f.chain([f.map, f.filter, f.reduce]);
+    var _ = chain([fun.map, fun.filter, fun.reduce]);
 
     return op(a, _);
 }
@@ -32,7 +34,7 @@ suite(checkCapitalize, [
 ]);
 
 function checkCapitalize(a) {
-    var _ = f.chain(capitalize);
+    var _ = chain(capitalize);
 
     return _(a).capitalize().val();
 }

@@ -1,12 +1,10 @@
 var suite = require('suite.js');
-var partial = require('funkit/functional/partial');
-var noop = require('funkit/functional/noop');
-var f = require('funkit/common');
+var f = require('funkit');
 
 var AssertionError = require('assert').AssertionError;
 
-var fn = f.err(noop);
+var fn = f.common.err(f.noop);
 
-suite(partial(fn, AssertionError), [
+suite(f.partial(fn, AssertionError), [
     'foo', suite.exception(AssertionError)
 ]);

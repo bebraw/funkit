@@ -1,8 +1,7 @@
 var suite = require('suite.js');
-var f = require('funkit/async');
-var partial = require('funkit/functional/partial');
+var f = require('funkit');
 
-suite(suite.async(partial(f.parallel, getName)), [
+suite(suite.async(f.partial(f.async.parallel, getName)), [
     [['1', '2', '3']], ['1', '2', '3']
 ]);
 

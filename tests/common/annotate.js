@@ -1,21 +1,21 @@
 var suite = require('suite.js');
-var partial = require('funkit/functional/partial');
-var f = require('funkit/common');
+var f = require('funkit');
+var annotate = f.common.annotate;
 
 function add(a, b) {
     return a + b;
 }
 
-var addNumbers = f.annotate(add, Number, Number);
+var addNumbers = annotate(add, Number, Number);
 
-suite(partial(getMeta, addNumbers), [
+suite(f.partial(getMeta, addNumbers), [
     '_doc', undefined,
     '_invariants', [Number, Number]
 ]);
 
-var addStrings = f.annotate(add, String, String, 'Appends two strings');
+var addStrings = annotate(add, String, String, 'Appends two strings');
 
-suite(partial(getMeta, addStrings), [
+suite(f.partial(getMeta, addStrings), [
     '_doc', 'Appends two strings',
     '_invariants', [String, String]
 ]);

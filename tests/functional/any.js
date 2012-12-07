@@ -1,7 +1,7 @@
 var suite = require('suite.js');
-var f = require('funkit/functional');
+var f = require('funkit');
 
-suite(f.partial(f.any, f.id), [
+suite(f.partial(f.functional.any, f.id), [
     ['foo'], false,
     [['a', 'b', '']], true,
     [['a', 'b', 'c']], true,
