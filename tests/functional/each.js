@@ -14,14 +14,14 @@ function checkForEach(o) {
     if(is.array(o)) {
         found = [];
 
-        f.forEach(function(v) {
+        f.each(function(v) {
             found.push(v);
         }, o);
     }
     else if(is.object(o)) {
         found = {};
 
-        f.forEach(function(k, v) {
+        f.each(function(k, v) {
             found[k] = v;
         }, o);
     }
