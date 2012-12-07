@@ -1,10 +1,12 @@
 // GENERATED! DO NOT MODIFY!
-define(['funkit/functional/partial'], function(partial, require) {
+define(['funkit/functional'], function(fun, require) {
     var ret = {
         {{#list modules}}'{{name}}': require('./{{name}}'){{/list}}
     };
 
-    ret.partial = partial;
+    ret.partial = fun.partial;
+    ret.id = fun.id;
+    ret.noop = fun.noop;
 
     return ret;
 });
