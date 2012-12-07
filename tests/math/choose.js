@@ -2,11 +2,11 @@ var suite = require('suite.js');
 var g = require('generators.js');
 var f = require('funkit/math');
 
-suite(f.choose, suite.generate(1000,
-    [g.array(100, g.number(1000))],
-    function(op, a) {
-        var ret = op(a);
+suite._amount = 1000;
+suite._generator = g.any;
 
-        return !ret || f.between(-1000, 1000, ret);
-    })
-);
+suite(f.choose, function(op, a) {
+    var ret = op(a);
+
+    return !ret || a.indexOf(ret) >= 0;
+});
