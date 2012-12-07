@@ -4,6 +4,10 @@
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
     "version": "0.6.0-dev",
 
+    "dependencies": {
+        "is-js": "== 0.1.1"
+    },
+
     "devDependencies": {
         "commander": "== 1.1.1",
         "glob": "== 3.1.14",

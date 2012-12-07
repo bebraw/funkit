@@ -1,5 +1,5 @@
 var suite = require('suite.js');
-var is = require('funkit/is');
+var is = require('is-js');
 var ops = require('funkit/ops');
 var f = require('funkit/functional');
 
@@ -18,7 +18,7 @@ function checkForEach(o) {
             found.push(v);
         }, o);
     }
-    if(is.object(o)) {
+    else if(is.object(o)) {
         found = {};
 
         f.forEach(function(k, v) {
