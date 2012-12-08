@@ -4,9 +4,11 @@ var fs = require('fs');
 var path = require('path');
 var Handlebars = require('handlebars');
 var nodefy = require('nodefy');
+var jshint = require('jshint');
 
 exports.generateAMD = generateAMD;
 exports.generateCJS = generateCJS;
+exports.lintAMD = lintAMD;
 
 if(require.main == module) main(process.argv);
 
@@ -17,6 +19,7 @@ function main(argv) {
 
     cmd(program, 'amd', 'generate amd modules', partial(generateAMD, out, noop));
     cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out, noop));
+    cmd(program, 'lint', 'lint amd modules', partial(lintAMD, out, noop));
 
     program.parse(argv);
 
@@ -45,22 +48,47 @@ function cmd(program, command, desc, action) {
 }
 
 function generateAMD(out, done) {
-   var libPath = path.join(__dirname, 'lib');
+    var libPath = path.join(__dirname, 'lib');
 
-    dirs(libPath, function(err, dir) {
+    iterateDir(libPath, 'js', function(err, dir, files) {
+            writeTemplate(files, path.basename(dir), 'package', out);
+        },
+        function(err, dirs) {
+            writeTemplate(dirs, 'index', 'index', out);
+
+            done();
+        }
+    );
+}
+
+function lintAMD(out, done) {
+    var libPath = path.join(__dirname, 'lib');
+
+    iterateDir(libPath, 'js', function(err, dir, files) {
+        files.map(function(file) {
+            fs.readFile(file, 'utf8', function(err, data) {
+                if(!jshint.JSHINT(data)) {
+                    console.log(file);
+                    console.log(jshint.JSHINT.data());
+                }
+            });
+        });
+    }, done);
+}
+
+function iterateDir(dirPath, targetExt, fileFound, done) {
+    dirs(dirPath, function(err, dir) {
         files(dir, function(err, file) {
             var ext = path.extname(file);
 
-            if(ext == '.js') return file;
+            if(ext == '.' + targetExt) return file;
         }, function(err, files) {
-            writeTemplate(files, path.basename(dir), 'package', out);
+            fileFound(err, dir, files);
         });
 
         return dir;
     }, function(err, dirs) {
-        writeTemplate(dirs, 'index', 'index', out);
-
-        done();
+        done(err, dirs);
     });
 }
 
