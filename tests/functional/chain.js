@@ -29,9 +29,6 @@ function op(a, _) {
     return _(a).map(f.partial(ops.mul, 2)).filter(f.partial(ops.gt, 2)).reduce(ops.add).val();
 }
 
-// XXX: broken since capitalize has been annotated and it is missing the name
-// prop!
-/*
 suite(checkCapitalize, [
     'foobar', 'Foobar'
 ]);
@@ -41,4 +38,3 @@ function checkCapitalize(a) {
 
     return _(a).capitalize().val();
 }
-*/
