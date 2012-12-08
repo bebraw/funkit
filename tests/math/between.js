@@ -1,7 +1,7 @@
 var suite = require('suite.js');
+var arr = require('funkit/array');
 var f = require('funkit/math');
 
-suite(f.between, [
-    [1, 2, 1], true,
-    [100, 1000, 2], false
-]);
+suite(f.between, function(op, a, b, val) {
+    return op(a, b, val) == (arr.index(val, f.range(a, b + 1)) >= 0);
+});
