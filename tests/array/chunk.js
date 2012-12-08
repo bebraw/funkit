@@ -7,6 +7,5 @@ suite._amount = 1000;
 suite._generator = g.any;
 
 suite(f.chunk, function(op, len, arr) {
-    // XXX: eliminate isNaN
-    return isNaN(len) || equals(f.flatten(op(len, arr)), arr);
+    return equals(f.flatten(op(len, arr)), arr);
 });
