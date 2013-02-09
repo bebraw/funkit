@@ -5,7 +5,7 @@
     "version": "0.6.0-dev",
 
     "dependencies": {
-        "annotate.js": "== 0.5.6",
+        "annotate.js": "== 0.6.0",
         "is-js": "== 0.1.1"
     },
 

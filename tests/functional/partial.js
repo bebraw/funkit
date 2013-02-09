@@ -17,7 +17,8 @@ var gtZero = f.partial(gt, 0);
 suite(f.partial(getProperty, gtZero), [
     '_name', gt._name,
     '_doc', gt._doc,
-    '_invariants', [[is.number], [is.fn]]
+    '_preconditions', [[is.number], [is.fn]],
+    '_postconditions', []
 ]);
 
 function getProperty(fn, k) {
