@@ -3,7 +3,5 @@ var arr = require('funkit/array');
 var f = require('funkit/math');
 
 suite(f.ceil, function(op, a) {
-    var res = op(a);
-
-    return a <= res && res <= a + 1;
+    return f.between(op(a), a, a + 1);
 });
