@@ -5,6 +5,8 @@ var f = require('funkit/math');
 /*
 XXX: enable once suite.js can generate tests more effectively
 suite(f.asin, function(op, a) {
-    return -Math.PI / 2 <= op(a) <= Math.PI / 2;
+    var res = op(a);
+
+    return -Math.PI / 2 <= res && res <= Math.PI / 2;
 });
 */
