@@ -1,6 +1,6 @@
 {
   "name": "funkit",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "main": "./lib/index.js",
   "dependencies": {
     "is": "scottrabin/is-js"
