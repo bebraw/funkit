@@ -21,9 +21,10 @@
 
     "scripts": {
         "test": "node ./test.js"
+        "prepublish": "node ./build.js cjs --output node"
     },
 
-    "main": "./node_modules/funkit/index.js",
+    "main": "./node/index.js",
 
     "repository": {
         "type": "git",

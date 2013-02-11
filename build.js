@@ -15,10 +15,11 @@ if(require.main == module) main(process.argv);
 function main(argv) {
     var program = require('commander');
 
+    program.option('-o --output [path]', 'output path for cjs');
     program.option('-s --silent', 'suppress log messages');
 
     cmd(program, 'amd', 'generate amd modules', partial(generateAMD, out, noop));
-    cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out, noop));
+    cmd(program, 'cjs', 'generate cjs modules', partial(generateCJS, out, program, noop));
     cmd(program, 'lint', 'lint amd modules', partial(lintAMD, out, noop));
 
     program.parse(argv);
@@ -165,11 +166,13 @@ function readdir(p, cb, done) {
     });
 }
 
-function generateCJS(out, done) {
+function generateCJS(out, program, done) {
     out = out || noop;
+    program = program = {};
+    var outputPath = program.output || 'node_modules/funkit';
 
     generateAMD(out, function() {
-        nodefy.batchConvert('lib/**/**.js', 'node_modules/funkit', function(err, results) {
+        nodefy.batchConvert('lib/**/**.js', outputPath, function(err, results) {
             results.forEach(function(v) {
                 out(path.join(__dirname, v.outputPath));
             });

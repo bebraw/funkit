@@ -3,7 +3,7 @@
 var glob = require('glob');
 var build = require('./build');
 
-build.generateCJS(null, function() {
+build.generateCJS(null, null, function() {
     build.lintAMD(null, function() {
         glob('./tests/**/*.js', function(err, files) {
             files.forEach(function(file) {
