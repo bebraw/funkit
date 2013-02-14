@@ -168,7 +168,7 @@ function readdir(p, cb, done) {
 
 function generateCJS(out, program, done) {
     out = out || noop;
-    program = program = {};
+    program = program || {};
     var outputPath = program.output || 'node_modules/funkit';
 
     generateAMD(out, function() {
