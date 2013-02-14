@@ -1,5 +1,5 @@
 // GENERATED! DO NOT MODIFY!
-define(['require', 'funkit/functional/chain', 'funkit/functional/each', 'funkit/object/values', {{#list modules}}'./{{package}}/{{name}}'{{/list}}],
+define(['require', './functional/chain', './functional/each', './object/values', {{#list modules}}'./{{package}}/{{name}}'{{/list}}],
         function(require, chain, each, values) {
     var functions = {
         {{#list modules}}'{{name}}': require('./{{package}}/{{name}}'){{/list}}
