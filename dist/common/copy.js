@@ -5,6 +5,9 @@ var functional = require('../functional');
         .on(is.array, function(o) {
             return o.slice(0);
         })
+        .on(is.fn, function(o) {
+            return o;
+        })
         .on(is.object, function(o) {
             var ret = {};
 
