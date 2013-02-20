@@ -3,6 +3,10 @@ var g = require('generators.js');
 var f = require('funkit/common');
 var equals = require('funkit/ops/equals');
 
+suite(f.copy, [
+    [String], String
+]);
+
 suite(f.copy, suite.generate(1000,
     [g.array(100, g.number(1000))],
     function(op, a) {
