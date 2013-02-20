@@ -21,10 +21,10 @@
 
     "scripts": {
         "test": "node ./test.js",
-        "prepublish": "node ./build.js cjs --silent"
+        "prepublish": "node ./build.js cjs --output ./dist --silent"
     },
 
-    "main": "./node_modules/funkit/index.js",
+    "main": "./dist/index.js",
 
     "repository": {
         "type": "git",
