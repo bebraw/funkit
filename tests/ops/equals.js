@@ -10,8 +10,18 @@ suite(f.ops.equals, suite.generate(1000,
 ));
 
 suite(f.partial(f.ops.equals, []), [
+    {}, false,
     [[]], true,
     [[3]], false
+]);
+
+suite(f.partial(f.ops.equals, {}), [
+    [[]], false
+]);
+
+suite(f.partial(f.ops.equals, [{a: 2}]), [
+    [[{a: 2}]], true,
+    {0: {a: 2}}, false
 ]);
 
 suite(f.partial(f.ops.equals, [1, 2, 3]), [
