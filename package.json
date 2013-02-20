@@ -14,7 +14,7 @@
         "glob": "== 3.1.14",
         "handlebars": "== 1.0.7",
         "nodefy": "== 0.2.1",
-        "suite.js": "== 0.5.4",
+        "suite.js": "== 0.5.6",
         "generators.js": "== 0.3.5",
         "jshint": "== 0.9.1"
     },
