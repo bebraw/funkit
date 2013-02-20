@@ -2,7 +2,7 @@
     "name": "funkit",
     "description": "Various utilities",
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
-    "version": "0.7.3",
+    "version": "0.7.4",
 
     "dependencies": {
         "annotate": "== 0.6.2",
