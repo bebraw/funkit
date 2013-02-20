@@ -21,10 +21,10 @@
 
     "scripts": {
         "test": "node ./test.js",
-        "prepublish": "node ./build.js cjs --output node --silent"
+        "prepublish": "node ./build.js cjs --output ./node_modules/funkit --silent"
     },
 
-    "main": "./node/index.js",
+    "main": "./node_modules/funkit/index.js",
 
     "repository": {
         "type": "git",
@@ -32,7 +32,7 @@
     },
 
     "directories": {
-        "lib": "./node_modules/funkit"
+        "lib": "./node_modules/funkit/index.js"
     },
 
     "homepage": "https://github.com/bebraw/funkit",
