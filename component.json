@@ -3,6 +3,7 @@
   "version": "0.7.4",
   "main": "./lib/index.js",
   "dependencies": {
+    "annotate.js": "0.6.5",
     "is": "scottrabin/is-js"
   }
 }
