@@ -1,6 +1,6 @@
 {
   "name": "funkit",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "main": "./lib/index.js",
   "dependencies": {
     "annotate.js": "0.6.5",
