@@ -1,8 +1,6 @@
 var annotate = require('annotate');
 var is = require('is-js');
-var functional = require('../functional');
-    var not = functional.not;
-
+var not = require('../functional/not');
     function range(start, end, stride) {
         if(stride < 1) return [];
 

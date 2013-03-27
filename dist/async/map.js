@@ -2,8 +2,9 @@ var annotate = require('annotate');
 var is = require('is-js');
     function map(operation, data, done) {
         var accumData = [];
+        var i, len;
 
-        for(var i = 0, len = data.length; i < len; i++) {
+        for(i = 0, len = data.length; i < len; i++) {
             operation(data[i], accumulate, i);
         }
 

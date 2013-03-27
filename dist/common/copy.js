@@ -1,6 +1,6 @@
 var annotate = require('annotate');
 var is = require('is-js');
-var functional = require('../functional');
+var id = require('../functional/id');
     module.exports = annotate('copy', 'Returns a shallow copy')
         .on(is.array, function(o) {
             return o.slice(0);
@@ -15,5 +15,5 @@ var functional = require('../functional');
 
             return ret;
         })
-        .on(functional.id, functional.id);
+        .on(id, id);
 

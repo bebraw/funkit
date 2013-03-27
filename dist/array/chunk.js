@@ -1,10 +1,9 @@
 var annotate = require('annotate');
 var range = require('../math/range');
-var functional = require('../functional');
+var map = require('../functional/map');
+var partial = require('../functional/partial');
 var op = require('../ops');
 var is = require('is-js');
-    var map = functional.map;
-    var partial = functional.partial;
 
     function chunk(len, a) {
         if(isNaN(len)) return [];

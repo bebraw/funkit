@@ -2,6 +2,7 @@ var annotate = require('annotate');
 var is = require('is-js');
 var each = require('../functional/each');
 var deepcopy = require('../common/deepcopy');
+var id = require('../functional/id');
     module.exports = annotate('merge', 'Merges given objects')
         .on(is.array, is.array, function(a, b) {
             return a.concat(b);
@@ -27,5 +28,11 @@ var deepcopy = require('../common/deepcopy');
             }
 
             return ret;
-        });
+        })
+        .on(any, any, id);
+
+        // TODO: move this elsewhere
+        function any() {
+            return true;
+        }
 

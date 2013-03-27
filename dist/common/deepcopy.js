@@ -1,6 +1,6 @@
 var annotate = require('annotate');
 var is = require('is-js');
-var functional = require('../functional');
+var id = require('../functional/id');
 var copy = require('./copy');
     // http://james.padolsey.com/javascript/deep-copying-of-objects-and-arrays/#comment-10679
     var deepcopy = annotate('deepcopy', 'Returns a deep copy')
@@ -17,6 +17,6 @@ var copy = require('./copy');
             return copy;
         })
         // TODO: is.any
-        .on(function() {return true;}, functional.id);
+        .on(function() {return true;}, id);
     module.exports = deepcopy;
 
