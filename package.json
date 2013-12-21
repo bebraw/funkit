@@ -1,50 +1,45 @@
 {
-    "name": "funkit",
-    "description": "Various utilities",
-    "author": "Juho Vepsalainen <bebraw@gmail.com>",
-    "version": "0.7.7",
-
-    "dependencies": {
-        "annotate": "== 0.6.2",
-        "is-js": "== 0.1.1"
-    },
-
-    "devDependencies": {
-        "commander": "== 1.1.1",
-        "glob": "== 3.1.14",
-        "handlebars": "== 1.0.7",
-        "nodefy": "== 0.2.1",
-        "suite.js": "== 0.5.6",
-        "generators.js": "== 0.3.5",
-        "jshint": "== 0.9.1"
-    },
-
-    "scripts": {
-        "test": "node ./test.js",
-        "prepublish": "node ./build.js cjs --output ./dist --silent"
-    },
-
-    "main": "./dist/index.js",
-
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:bebraw/funkit.git"
-    },
-
-    "directories": {
-        "lib": "./node_modules/funkit/index.js"
-    },
-
-    "homepage": "https://github.com/bebraw/funkit",
-
-    "bugs": {
-        "url": "https://github.com/bebraw/funkit/issues"
-    },
-
-    "keywords": ["functional", "utilities"],
-
-    "licenses": [{
-        "type": "MIT",
-        "url": "https://github.com/bebraw/funkit/blob/master/LICENSE"
-    }]
+  "name": "funkit",
+  "description": "Various utilities",
+  "author": "Juho Vepsalainen <bebraw@gmail.com>",
+  "version": "0.7.8",
+  "dependencies": {
+    "annotate": "== 0.6.2",
+    "is-js": "== 0.1.1"
+  },
+  "devDependencies": {
+    "commander": "== 1.1.1",
+    "glob": "== 3.1.14",
+    "handlebars": "== 1.0.7",
+    "nodefy": "== 0.2.1",
+    "suite.js": "== 0.5.6",
+    "generators.js": "== 0.3.5",
+    "jshint": "== 0.9.1"
+  },
+  "scripts": {
+    "test": "node ./test.js",
+    "prepublish": "node ./build.js cjs --output ./dist --silent"
+  },
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bebraw/funkit.git"
+  },
+  "directories": {
+    "lib": "./node_modules/funkit/index.js"
+  },
+  "homepage": "https://github.com/bebraw/funkit",
+  "bugs": {
+    "url": "https://github.com/bebraw/funkit/issues"
+  },
+  "keywords": [
+    "functional",
+    "utilities"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bebraw/funkit/blob/master/LICENSE"
+    }
+  ]
 }
