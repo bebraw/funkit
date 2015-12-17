@@ -10,7 +10,7 @@
   "devDependencies": {
     "commander": "== 1.1.1",
     "glob": "== 3.1.14",
-    "handlebars": "== 1.0.7",
+    "handlebars": "^4.0.5",
     "nodefy": "== 0.2.1",
     "suite.js": "== 0.5.6",
     "generators.js": "== 0.3.5",
